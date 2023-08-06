@@ -10,21 +10,27 @@ const {
 
 const { ctrlWrapper } = require("../../helpers");
 
-const { validateBody, isValidId } = require("../../middlewares");
+const { validateBody, isValidId, authenficate } = require("../../middlewares");
 const { schemas } = require("../../models/contact");
 
 const router = express.Router();
 
-router.get("/", ctrlWrapper(getAll));
+router.get("/", authenficate, ctrlWrapper(getAll));
 
-router.get("/:id", isValidId, ctrlWrapper(getById));
+router.get("/:id", authenficate, isValidId, ctrlWrapper(getById));
 
-router.post("/", validateBody(schemas.addSchema), ctrlWrapper(add));
+router.post(
+  "/",
+  authenficate,
+  validateBody(schemas.addSchema),
+  ctrlWrapper(add)
+);
 
-router.delete("/:id", isValidId, ctrlWrapper(deleteById));
+router.delete("/:id", authenficate, isValidId, ctrlWrapper(deleteById));
 
 router.put(
   "/:id",
+  authenficate,
   isValidId,
   validateBody(schemas.addSchema),
   ctrlWrapper(updateById)
