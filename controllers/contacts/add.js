@@ -1,5 +1,4 @@
 const { Contact } = require("../../models/contact");
-const { ctrlWrapper } = require("../../helpers");
 
 const add = async (req, res) => {
   const { _id: owner } = req.user;
