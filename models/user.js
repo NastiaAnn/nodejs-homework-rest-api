@@ -25,6 +25,10 @@ const userSchema = new Schema(
       type: String,
       default: "",
     },
+    avatarURL: {
+      type: String,
+      required: true,
+    },
   },
   { versionKey: false, timestamps: true }
 );
@@ -55,9 +59,3 @@ module.exports = {
   User,
   schemas,
 };
-
-//   token: String
-// owner: {
-//   type: Schema.Types.ObjectId,
-//   ref: 'user',
-// }
